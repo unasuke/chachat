@@ -3,4 +3,17 @@
   <p>Find me in app/views/timeline/index.html.erb</p>
   <%= button_to  "GitHub login", "/auth/github", method: :post, data: { turbo: false } %>
   <pre><%= current_user&.to_json %></pre>
+
+  <%= turbo_frame_tag @post do %>
+    <%= form_with model: @post do |f| %>
+      <%= f.text_field :body, require: true %>
+      <%= f.submit %>
+    <% end %>
+
+    <ul>
+      <% @posts&.each do |post| %>
+        <li><%= post.body %></li>
+      <% end %>
+    </ul>
+  <% end %>
 </div>
