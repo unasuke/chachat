@@ -1,0 +1,28 @@
+version: '3'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: bash -c "rm -f tmp/pids/server.pid && bin/dev"
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+    depends_on:
+      - postgres
+      - redis
+    tty: true
+    environment:
+      RAILS_ENV: development
+      GITHUB_CLIENT_ID: ${GITHUB_CLIENT_ID}
+      GITHUB_CLIENT_SECRET: ${GITHUB_CLIENT_SECRET}
+      REDIS_URL: redis://redis:6379
+  postgres:
+    image: postgres:13.6
+    environment:
+      POSTGRES_PASSWORD: pgpassword
+  mysql:
+    image: mysql:8.0
+  redis:
+    image: redis:7.0.0 
