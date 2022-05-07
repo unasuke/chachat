@@ -4,19 +4,27 @@
   <%= turbo_frame_tag @post, class: "block w-full flex flex-col items-center mb-6" do %>
     <div class="flex items-start space-x-4 max-w-xl w-full">
       <div class="flex-shrink-0">
-        <%= image_tag current_user&.image_url || "", class: "inline-block h-10 w-10 rounded-full" %>
+        <% if logged_in? %>
+          <%= image_tag current_user.image_url, alt: current_user.nickname, class: "inline-block h-10 w-10 rounded-full" %>
+        <% else %>
+          <span class="inline-block h-10 w-10 rounded-full overflow-hidden bg-gray-100">
+            <svg class="h-full w-full text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+          </span>
+        <% end %>
       </div>
       <div class="min-w-0 flex-1">
         <%= form_with model: @post, class: "relative" do |f| %>
           <div class="border border-gray-300 rounded-lg shadow-sm overflow-hidden focus-within:border-stone-500 focus-within:ring-1 focus-within:ring-stone-500">
             <label for="comment" class="sr-only">Enter your post</label>
             <%= f.label :body, "Enter your post", class: "sr-only" %>
-            <%= f.text_area :body, rows: 3, class: "block w-full py-3 border-0 resize-none focus:ring-0 sm:text-sm", placeholder: "Enter your post" %>
+            <%= f.text_area :body, rows: 3, class: "block w-full py-3 border-0 resize-none focus:ring-0 sm:text-sm", placeholder: "Enter your post", disabled: !logged_in? %>
             <div class="py-2" aria-hidden="true"></div>
           </div>
           <div class="absolute bottom-0 inset-x-0 pl-3 pr-2 py-2 flex flex-row-reverse justify-between">
             <div class="flex-shrink-0">
-              <%= f.submit "Post", class: "inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-stone-600 hover:bg-stone-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-stone-500" %>
+              <%= f.submit "Post", disabled: !logged_in?, class: "inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-stone-600 hover:bg-stone-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-stone-500 disabled:bg-stone-200" %>
             </div>
           </div>
         <% end %>
