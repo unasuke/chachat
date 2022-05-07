@@ -1,5 +1,7 @@
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 w-full flex flex-col items-center">
-  <%= turbo_frame_tag @post, class: "block w-full flex flex-col items-center" do %>
+<%= turbo_stream_from "posts" %>
+
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 w-full flex flex-col items-center mb-12">
+  <%= turbo_frame_tag @post, class: "block w-full flex flex-col items-center mb-6" do %>
     <div class="flex items-start space-x-4 max-w-xl w-full">
       <div class="flex-shrink-0">
         <%= image_tag current_user&.image_url || "", class: "inline-block h-10 w-10 rounded-full" %>
@@ -20,10 +22,8 @@
         <% end %>
       </div>
     </div>
-    <ul>
-      <% @posts&.each do |post| %>
-        <li><%= post.body %></li>
-      <% end %>
-    </ul>
   <% end %>
+  <ul id="posts" role="list" class="space-y-4 max-w-xl w-full">
+    <%= render @posts %>
+  </ul>
 </div>

@@ -1,0 +1,11 @@
+<%= turbo_frame_tag post, class: "block w-full" do %>
+  <li class="bg-white shadow overflow-hidden px-4 py-4 sm:px-6 sm:rounded-md">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center">
+        <%= image_tag post.user.image_url, alt: post.user.nickname, class: "inline-block h-10 w-10 rounded-full mr-4" %>
+        <p class="whitespace-pre-wrap"><%= post.body %></p>
+      </div>
+      <div class="self-end"><span class="text-xs text-stone-500">@<%= post.user.nickname %> <%= post.created_at %></span></div>
+    </div>
+  </li>
+<% end %>

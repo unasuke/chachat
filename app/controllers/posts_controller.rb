@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   def create
-    Post.create(user: current_user, body: post_params[:body])
+    @post = Post.create(user: current_user, body: post_params[:body])
+    @post.broadcast_prepend_to("posts") if @post.persisted?
     redirect_to root_path
   end
 
