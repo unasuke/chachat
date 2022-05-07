@@ -1,15 +1,25 @@
-<div>
-  <h1 class="font-bold text-4xl">Timeline#index</h1>
-  <p>Find me in app/views/timeline/index.html.erb</p>
-  <%= button_to  "GitHub login", "/auth/github", method: :post, data: { turbo: false } %>
-  <pre><%= current_user&.to_json %></pre>
-
-  <%= turbo_frame_tag @post do %>
-    <%= form_with model: @post do |f| %>
-      <%= f.text_field :body, require: true %>
-      <%= f.submit %>
-    <% end %>
-
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 w-full flex flex-col items-center">
+  <%= turbo_frame_tag @post, class: "block w-full flex flex-col items-center" do %>
+    <div class="flex items-start space-x-4 max-w-xl w-full">
+      <div class="flex-shrink-0">
+        <%= image_tag current_user&.image_url || "", class: "inline-block h-10 w-10 rounded-full" %>
+      </div>
+      <div class="min-w-0 flex-1">
+        <%= form_with model: @post, class: "relative" do |f| %>
+          <div class="border border-gray-300 rounded-lg shadow-sm overflow-hidden focus-within:border-stone-500 focus-within:ring-1 focus-within:ring-stone-500">
+            <label for="comment" class="sr-only">Enter your post</label>
+            <%= f.label :body, "Enter your post", class: "sr-only" %>
+            <%= f.text_area :body, rows: 3, class: "block w-full py-3 border-0 resize-none focus:ring-0 sm:text-sm", placeholder: "Enter your post" %>
+            <div class="py-2" aria-hidden="true"></div>
+          </div>
+          <div class="absolute bottom-0 inset-x-0 pl-3 pr-2 py-2 flex flex-row-reverse justify-between">
+            <div class="flex-shrink-0">
+              <%= f.submit "Post", class: "inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-stone-600 hover:bg-stone-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-stone-500" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
     <ul>
       <% @posts&.each do |post| %>
         <li><%= post.body %></li>
