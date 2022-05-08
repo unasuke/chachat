@@ -85,4 +85,5 @@ Rails.application.configure do
   config.hosts << "chachatapp.herokuapp.com"
   config.hosts << "chachat.up.railway.app"
   config.hosts << "chachat.onrender.com"
+  config.hosts << "chachat.fly.dev"
 end

@@ -6,3 +6,4 @@ COPY Gemfile Gemfile.lock ./
 RUN bundle install -j4
 COPY . .
 RUN bin/rails assets:precompile
+CMD bin/rails server -b 0.0.0.0
