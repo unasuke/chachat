@@ -11,6 +11,7 @@ processes = []
 [env]
   RAILS_ENV = "production"
   RAILS_SERVE_STATIC_FILES = "true"
+  PLATFORM_NAME = "fly.io"
 
 [experimental]
   allowed_public_ports = []

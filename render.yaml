@@ -19,6 +19,8 @@ services:
         value: production
       - key: RAILS_SERVE_STATIC_FILES
         value: "1"
+      - key: PLATFORM_NAME
+        value: "Render"
     buildCommand: |
       bundle install
       bin/rails assets:precompile
