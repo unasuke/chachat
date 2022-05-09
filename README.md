@@ -1,24 +1,15 @@
-# README
+# Chachat
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Very simple chat(?) application.
 
-Things you may want to cover:
+## Heroku
+<https://chachatapp.herokuapp.com>
 
-* Ruby version
+## Render
+<https://chachat.onrender.com>
 
-* System dependencies
+## Railway
+<https://chachat.up.railway.app>
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## fly.io
+<https://chachat.fly.dev>
