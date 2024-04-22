@@ -230,7 +230,7 @@ GEM
       concurrent-ruby (~> 1.0)
     uri (0.13.0)
     version_gem (1.1.4)
-    web-console (4.2.0)
+    web-console (4.2.1)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
