@@ -232,7 +232,7 @@ GEM
     regexp_parser (2.9.2)
     reline (0.6.2)
       io-console (~> 0.5)
-    rexml (3.4.1)
+    rexml (3.4.2)
     rubyzip (3.0.1)
     securerandom (0.4.1)
     selenium-webdriver (4.35.0)
