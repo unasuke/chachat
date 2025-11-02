@@ -146,7 +146,7 @@ GEM
       timeout
     net-smtp (0.5.1)
       net-protocol
-    nio4r (2.7.4)
+    nio4r (2.7.5)
     nokogiri (1.18.9-x86_64-linux-gnu)
       racc (~> 1.4)
     oauth2 (2.0.9)
@@ -178,7 +178,7 @@ GEM
       date
       stringio
     public_suffix (5.0.5)
-    puma (6.6.1)
+    puma (7.1.0)
       nio4r (~> 2.0)
     racc (1.8.1)
     rack (3.2.1)
@@ -299,7 +299,7 @@ DEPENDENCIES
   omniauth-github
   omniauth-rails_csrf_protection
   pg (~> 1.6)
-  puma (~> 6.6)
+  puma (~> 7.1)
   rails (~> 8.0.2)
   redis (~> 5.4)
   selenium-webdriver
