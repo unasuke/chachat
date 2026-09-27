@@ -1,4 +1,4 @@
-FROM ruby:3.2.6-slim-bullseye
+FROM ruby:3.2.6-slim-bookworm
 WORKDIR /app
 
 RUN apt-get update && apt-get install -y libpq-dev gcc make libmariadb-dev
